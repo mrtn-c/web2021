@@ -260,17 +260,30 @@ public class GenerarEjemplosDePlanes {
         Random random = new Random();
         anios_p.remove(2001-1990);
         anios_p.remove(2018-1990);
+        ValidarPlan vp = new ValidarPlan();
 
         for (int i=cantidadAGenerar; i != 0; i--){
             int indexRamdom = random.nextInt(anios_p.size());
             int anioRandom = anios_p.get(indexRamdom);
             try {
-                planes.add(crear_plan.crear(new PlanImpl(), anioRandom));
+                Plan plan_aux = crear_plan.crear(new PlanImpl(), anioRandom);
+                if(vp.validar(plan_aux, planes)){
+                    planes.add(plan_aux);
+                } else {
+                    System.out.println("Plan con año " + plan_aux.getAnio() + " no es valido");
+                }
             } catch (Exception e) {
                 e.printStackTrace();
             }
+
+           
+            
             anios_p.remove(indexRamdom);
+
         }
+
+        
+        
        
     } 
 

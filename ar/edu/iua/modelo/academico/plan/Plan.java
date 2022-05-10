@@ -22,6 +22,8 @@ public abstract class Plan extends Objeto {
 
     abstract public boolean isEstadoNoActivo();
 
+    abstract public boolean hasEstado();
+
     abstract public List<AnioPlan> getAnios();
 
     abstract public void setAnios(List<AnioPlan> anios);

@@ -27,26 +27,22 @@ public class CrearPlanImpl implements CrearPlan {
                 break;
         }
         
-        File archivo = null;
-        FileReader fr = null;
-        BufferedReader br = null; 
+        BufferedReader in = null; 
         aux = random.nextInt(3); //random para elegir archivo a leer
         try {
             
             switch(aux){
                 case 0:
-                    archivo = new File("ar/edu/iua/recurso/materias1.txt");                   
+                    in = new BufferedReader(new InputStreamReader(new FileInputStream("ar/edu/iua/recurso/materias1.txt"), "utf-8"));                  
                     break;
                 case 1:
-                    archivo = new File("ar/edu/iua/recurso/materias2.txt");
+                    in = new BufferedReader(new InputStreamReader(new FileInputStream("ar/edu/iua/recurso/materias2.txt"), "utf-8"));
                     break;
                 default:
-                    archivo = new File("ar/edu/iua/recurso/materias3.txt");
+                    in = new BufferedReader(new InputStreamReader(new FileInputStream("ar/edu/iua/recurso/materias3.txt"), "utf-8"));
                     break;
             }
-
-            fr = new FileReader(archivo);
-            br = new BufferedReader(fr);
+           
         
             for(int i = 1; i<6; i++){
                 
@@ -74,7 +70,7 @@ public class CrearPlanImpl implements CrearPlan {
                 
                 
 
-                while((linea=br.readLine())!=null && !linea.equals("zzz")){
+                while((linea=in.readLine())!=null && !linea.equals("zzz")){
                     anio_plan.getMaterias().add(new MateriaImpl(anio_plan, codigo_materia++, linea,(double) (random.nextInt(6)+1)));
 
                 }
@@ -87,7 +83,7 @@ public class CrearPlanImpl implements CrearPlan {
         } catch (Exception ex){
             ex.printStackTrace();
         } finally {
-            fr.close();
+            in.close();
         }
         
         

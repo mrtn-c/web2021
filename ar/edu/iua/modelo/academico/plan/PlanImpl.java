@@ -46,6 +46,10 @@ public class PlanImpl extends Plan {
     public boolean isEstadoNoActivo() {
         return estado == Estado.NO_ACTIVO;
     }
+    
+    public boolean hasEstado(){
+        return estado != null;
+    }
 
     public List<AnioPlan> getAnios() {
         return anios;
@@ -56,7 +60,7 @@ public class PlanImpl extends Plan {
     }
 
     // ---
-
+    
     public int hashCode() {
         final int prime = 31;
         int result = 1;

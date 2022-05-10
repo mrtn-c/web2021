@@ -1,49 +1,49 @@
 Lengua y Literatura
 Matemática
-Ciencias Naturales- Biología
+Ciencias Naturales- Biologia
 Ciencias Naturales- Física
-Ciencias Sociales- Geografía
+Ciencias Sociales- Geografia
 Lengua Extranjera- Inglés
-Educación Artística- Música
-Educación Tecnológica
-Ciudadanía y Participación
-Educación Física
+Educación Artística- Musica
+Educación Tecnologica
+Ciudadanía y Participacion
+Educación Fisica
 Catequesis
 zzz
 Lengua y Literatura
 Matemática
-Ciencias Naturales- Química
+Ciencias Naturales- Quimica
 Biología
 Ciencias Sociales- Historia
-Lengua Extranjera- Inglés
-Educación Artística- Artes Visuales
-Educación Tecnológica
-Ciudadanía y Participación
-Educación Física
+Lengua Extranjera- Ingles
+Educacion Artística- Artes Visuales
+Educacion Tecnologica
+Ciudadania y Participacion
+Educación Fisica
 Catequesis
 zzz
 Lengua y Literatura
-Matemática
-Física
-Química
-Geografía
+Matematica
+Fisica
+Quimica
+Geografia
 Historia
-Lengua Extranjera- Inglés
-Educación Artística- Artes Visuales
-Educación Artística- Música
-Educación Tecnológica
-Formación para la Vida y el Trabajo
-Educación Física
+Lengua Extranjera- Ingles
+Educacion Artistica- Artes Visuales
+Educacion Artistica- Música
+Educación Tecnologica
+Formacion para la Vida y el Trabajo
+Educacion Fisica
 Catequesis
 zzz
-Matemática
+Matematica
 Lengua y Literatura
-Biología
-Física
-Química
+Biologia
+Fisica
+Quimica
 Geografía
 Historia
-Lengua Extranjera- Inglés
+Lengua Extranjera- Ingles
 Educación Artística- Artes Visuales
 Educación Física
 Formación para la Vida y el Trabajo
