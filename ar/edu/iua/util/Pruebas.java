@@ -10,7 +10,7 @@ public class Pruebas {
 
     public void probar() {
 
-        List<Plan> planes = GenerarEjemplosDePlanes.generar(25, true);        
+        List<Plan> planes = GenerarEjemplosDePlanes.generar(2, true);        
 
         System.out.println("\n\nSe crearon " + planes.size() + " planes.");
 

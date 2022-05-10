@@ -258,13 +258,18 @@ public class GenerarEjemplosDePlanes {
             anios_p.add(i);
         }
         Random random = new Random();
-        anios_p.remove(2001);
-        anios_p.remove(2018);
+        anios_p.remove(2001-1990);
+        anios_p.remove(2018-1990);
 
         for (int i=cantidadAGenerar; i != 0; i--){
-            int anioRamdom = random.nextInt(anios_p.size());
-            planes.add(crear_plan.crear(new PlanImpl(), anioRamdom));
-            anios_p.remove(anioRamdom);
+            int indexRamdom = random.nextInt(anios_p.size());
+            int anioRandom = anios_p.get(indexRamdom);
+            try {
+                planes.add(crear_plan.crear(new PlanImpl(), anioRandom));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            anios_p.remove(indexRamdom);
         }
        
     } 

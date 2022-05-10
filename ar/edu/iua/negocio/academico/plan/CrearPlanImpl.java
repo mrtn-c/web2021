@@ -10,7 +10,7 @@ import java.util.Random;
 public class CrearPlanImpl implements CrearPlan {
 
     @Override
-    public Plan crear(Plan plan, int anio) {
+    public Plan crear(Plan plan, int anio) throws IOException {
         
         plan.setAnio(anio);
         Random random = new Random();
@@ -44,8 +44,11 @@ public class CrearPlanImpl implements CrearPlan {
                     archivo = new File("ar/edu/iua/recurso/materias3.txt");
                     break;
             }
+
+            fr = new FileReader(archivo);
+            br = new BufferedReader(fr);
         
-            for(int i = 1; i<5; i++){
+            for(int i = 1; i<6; i++){
                 
                 AnioPlan anio_plan = null;
                 switch(i){
@@ -69,8 +72,10 @@ public class CrearPlanImpl implements CrearPlan {
                 String linea;
                 int codigo_materia = 1;
                 
-                while((linea=br.readLine())!=null || linea!="-"){
-                    anio_plan.getMaterias().add(new MateriaImpl(anio_plan, codigo_materia++, linea, (random.nextInt(6)+1)));
+                
+
+                while((linea=br.readLine())!=null && !linea.equals("zzz")){
+                    anio_plan.getMaterias().add(new MateriaImpl(anio_plan, codigo_materia++, linea,(double) (random.nextInt(6)+1)));
 
                 }
                 plan.getAnios().add(anio_plan);

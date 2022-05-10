@@ -6,7 +6,7 @@ Educación Física
 Inglés
 Matemática
 Prácticas del lenguaje
--
+zzz
 Biología
 Construcción de Ciudadanía
 Físico-química
@@ -17,7 +17,7 @@ Educación Física
 Inglés
 Matemática
 Practicas del lenguaje
--
+zzz
 Biología
 Construcción de Ciudadanía
 Físico-química
@@ -28,7 +28,7 @@ Educación Física
 Inglés
 Matemática
 Practicas del lenguaje
--
+zzz
 Literatura
 Matemática - Ciclo Superior
 Educación Física
@@ -41,7 +41,7 @@ Historia
 Geografía
 Sistemas de Información Contable
 Teoría de las Organizaciones
--
+zzz
 Literatura
 Matemática - ciclo superior
 Educación Física

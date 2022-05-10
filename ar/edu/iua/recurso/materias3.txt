@@ -9,7 +9,7 @@ Formación Ética y Ciudadana
 Educación Tecnológica
 Artes (Música/Visuales)
 EDI
--
+zzz
 Matemática
 Lengua y Literatura
 Lengua Adicional (Francés/Italiano/Inglés)
@@ -21,7 +21,7 @@ Formación Ética y Ciudadana
 Educación Tecnológica
 Artes (Música/Visuales)
 EDI
--
+zzz
 Matemática
 Lengua y Literatura
 Lengua Adicional (Francés/Italiano/Inglés)
@@ -35,7 +35,7 @@ Economía
 Físico Química
 EDI
 Introducción a las Ciencias Sociales y Humanidades
--
+zzz
 Matemática
 Lengua y Literatura
 Lengua Adicional (Francés/Italiano/Inglés)
@@ -50,7 +50,7 @@ EDI
 Psicología
 Antropología Cultural
 Sociología
--
+zzz
 Matemática
 Lengua y Literatura
 Lengua Adicional (Francés/Italiano/Inglés)

@@ -9,7 +9,7 @@ Educación Tecnológica
 Ciudadanía y Participación
 Educación Física
 Catequesis
--
+zzz
 Lengua y Literatura
 Matemática
 Ciencias Naturales- Química
@@ -21,7 +21,7 @@ Educación Tecnológica
 Ciudadanía y Participación
 Educación Física
 Catequesis
--
+zzz
 Lengua y Literatura
 Matemática
 Física
@@ -35,7 +35,7 @@ Educación Tecnológica
 Formación para la Vida y el Trabajo
 Educación Física
 Catequesis
--
+zzz
 Matemática
 Lengua y Literatura
 Biología
@@ -47,7 +47,7 @@ Lengua Extranjera- Inglés
 Educación Artística- Artes Visuales
 Educación Física
 Formación para la Vida y el Trabajo
--
+zzz
 Matemática
 Lengua y Literatura
 Biología
@@ -61,16 +61,3 @@ Psicología
 Educación Física
 Form. para la Vida y el Trabajo
 Ciencias de la Tierra
--
-Matemática
-Lengua y Literatura
-Biología
-Química
-Lengua Extranjera- Inglés
-Educación Artística- Teatro
-Ciudadanía y Política
-Filosofía
-Educación Física
-Formación. para la Vida y el Trabajo
-Ambiente, Desarrollo y Sociedad
-Física y Astronomía
