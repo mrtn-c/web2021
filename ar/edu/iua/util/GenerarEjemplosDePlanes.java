@@ -268,6 +268,7 @@ public class GenerarEjemplosDePlanes {
             try {
                 Plan plan_aux = crear_plan.crear(new PlanImpl(), anioRandom);
                 if(vp.validar(plan_aux, planes)){
+                    System.out.println("plan:"+ plan_aux.getAnio() +" validado!");
                     planes.add(plan_aux);
                 } else {
                     System.out.println("Plan con año " + plan_aux.getAnio() + " no es valido");

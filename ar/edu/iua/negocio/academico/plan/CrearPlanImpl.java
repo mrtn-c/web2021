@@ -44,6 +44,8 @@ public class CrearPlanImpl implements CrearPlan {
             }
            
         
+            int codigo_materia = 1;
+            
             for(int i = 1; i<6; i++){
                 
                 AnioPlan anio_plan = null;
@@ -66,7 +68,7 @@ public class CrearPlanImpl implements CrearPlan {
                 }
                 
                 String linea;
-                int codigo_materia = 1;
+                
                 
                 
 
