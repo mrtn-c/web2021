@@ -9,11 +9,9 @@ import ar.edu.iua.modelo.academico.plan.Plan;
 
 public class ValidarPlan {
 
-    public boolean validar(Plan plan, List<Plan> planes) {
+    public static boolean validar(Plan plan) {
 
         List <Integer> auxNumAnio = new ArrayList<>();
-            
-        
         
         if (!plan.hasEstado()){ //comprobamos que tenga estado asignado.
             return false;
