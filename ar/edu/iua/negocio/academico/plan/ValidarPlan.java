@@ -54,6 +54,7 @@ public class ValidarPlan {
                   
             for (int j = 0; j<anio.getMaterias().size(); j++){           
                 if(!anio.getMaterias().get(j).getAnio().equals(anio)){            
+                    //throw new Exception("materia no pertenece a ese año"); //iria esto o lo de abajo?
                     System.out.println("materia no pertenece a ese año");
                     return false;           
                 } //J -- recorre materias, la i los años.                   
