@@ -12,7 +12,7 @@ import java.util.Random;
 public class CrearPlanImpl implements CrearPlan {
 
     @Override
-    public Plan /*boolean*/ crear(Plan plan, int anio) throws IOException {
+    public boolean crear(Plan plan, int anio) throws IOException {
         
         plan.setAnio(anio);
         Random random = new Random();
@@ -89,17 +89,15 @@ public class CrearPlanImpl implements CrearPlan {
         } finally {
             in.close();
         }
-        
-        ValidarPlan.validar(plan);
 
-        /*
+        
         if(ValidarPlan.validar(plan)) {
             BaseDeDatos.planes.add(plan);
             return true;
         }
-        return false*/
         
-        return plan;        
+        return false;
+                   
     }
 
 }

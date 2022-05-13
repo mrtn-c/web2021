@@ -13,6 +13,6 @@ public interface CrearPlanes {
             - planes no puede ser null
             - Ver las mismas reglas de CrearPlan.crear(Plan plan)
     */
-    boolean crear(List<Plan> planes) throws IOException;    
+    boolean crear(/*List<Plan> planes,*/ List<Integer> anios) throws IOException;    
     
 }

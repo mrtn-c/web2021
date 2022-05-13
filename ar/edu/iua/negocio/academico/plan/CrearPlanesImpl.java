@@ -10,14 +10,13 @@ import ar.edu.iua.persistencia.BaseDeDatos;
 public class CrearPlanesImpl implements CrearPlanes {
 
     @Override
-    public boolean crear(List<Plan> planes) throws IOException {
+    public boolean crear( List<Integer> anios) throws IOException {
 
-        Plan guardar = new PlanImpl();
         CrearPlanImpl aux = new CrearPlanImpl();
-
-        for (Plan plan : planes) {
-            guardar = aux.crear(plan, plan.getAnio());
-            BaseDeDatos.planes.add(guardar);
+        //Plan guardar = new PlanImpl();
+        
+        for (int anio : anios){
+            aux.crear(new PlanImpl() ,anio);
         }
 
         return true;

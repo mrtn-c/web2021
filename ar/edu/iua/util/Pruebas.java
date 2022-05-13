@@ -5,14 +5,15 @@ import java.util.List;
 import ar.edu.iua.interfazusuario.BuscarEImprimirPlanes;
 import ar.edu.iua.modelo.academico.plan.Plan;
 import ar.edu.iua.negocio.academico.plan.CrearPlanes;
+import ar.edu.iua.persistencia.BaseDeDatos;
 
 public class Pruebas {
 
     public void probar() {
 
-        List<Plan> planes = GenerarEjemplosDePlanes.generar(2, true);        
+        GenerarEjemplosDePlanes.generar(2, true);        
 
-        System.out.println("\n\nSe crearon " + planes.size() + " planes.");
+        System.out.println("\n\nSe crearon " + BaseDeDatos.planes.size() + " planes.");
 
 
         /*CrearPlanes crearPlanes = new CrearPlanesImpl();
