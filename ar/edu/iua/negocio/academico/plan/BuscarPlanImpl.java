@@ -1,26 +1,22 @@
 package ar.edu.iua.negocio.academico.plan;
 
-import java.util.List;
-
 import ar.edu.iua.modelo.academico.plan.Plan;
+import ar.edu.iua.persistencia.BaseDeDatos;
 
 public class BuscarPlanImpl implements BuscarPlan {
 
     @Override
-    public Plan buscar(int anio, List<Plan> planes) {
+    public Plan buscar(int anio) {
         
         
-        for (Plan plan : planes){
+        for (Plan plan : BaseDeDatos.planes){
             if(plan.getAnio() == anio){
                 return plan;
             }
         }    
         
-        
         System.out.println("Plan con anio: " + anio + " no encontrado!");
         return null;
-
-
 
     }
     

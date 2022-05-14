@@ -20,6 +20,10 @@ public class ValidarPlan {
         boolean borrador = plan.isEstadoBorrador() ? true : false;
          
         
+        if(plan.getAnio() < 1990 || plan.getAnio()> 2040){
+            return false;
+        }
+        
         
         //si se cumple alguna condicion, el plan NO se valida   
         for(int i = 0; i<plan.getAnios().size(); i++){

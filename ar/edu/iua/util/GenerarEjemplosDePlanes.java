@@ -1,21 +1,24 @@
 package ar.edu.iua.util;
 
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
 import ar.edu.iua.modelo.academico.plan.*;
 import ar.edu.iua.negocio.academico.plan.*;
-import ar.edu.iua.persistencia.BaseDeDatos;
 
 public class GenerarEjemplosDePlanes {
 
 
     // Este metodo primero crea 2 planes, segun https://monserrat.unc.edu.ar/secundario/plan-de-estudios/#1523542585948-acc3dfd8-8da3
     // y tambien crea de forma aleatoria una determinada cantidad de planes
-    public static boolean generar(int cantidadAGenerar, boolean imprimirResultado) {
+    public static List<Plan> generar(int cantidadAGenerar, boolean imprimirResultado) {
 
-        //List<Plan> planes = new ArrayList<Plan>();
+        List<Plan> planes = new ArrayList<Plan>();
 
         // ==========================================================================
 
@@ -25,8 +28,6 @@ public class GenerarEjemplosDePlanes {
 
         plan2018.setAnio(2018);
         plan2018.setEstadoActivo();
-
-        //planes.add(plan2018);
 
         // AÑOS DEL PLAN 2018
 
@@ -128,7 +129,7 @@ public class GenerarEjemplosDePlanes {
         // PLAN 2001
 
         if(ValidarPlan.validar(plan2018)){
-            BaseDeDatos.planes.add(plan2018);
+            planes.add(plan2018);
         } else {
             System.out.println("Plan " + plan2018.getAnio() + " no validado!");
         }
@@ -137,8 +138,6 @@ public class GenerarEjemplosDePlanes {
 
         plan2001.setAnio(2001);
         plan2001.setEstadoNoActivo();
-
-        //planes.add(plan2001);
 
         // AÑOS DEL PLAN 2001
 
@@ -246,28 +245,27 @@ public class GenerarEjemplosDePlanes {
         
         
         if(ValidarPlan.validar(plan2001)){
-            BaseDeDatos.planes.add(plan2001);
+            planes.add(plan2001);
         } else {
             System.out.println("Plan " + plan2001.getAnio() + " no validado!");
         }
         
         // ==========================================================================
 
-        generarYAgregarPlanesAleatoriamente(cantidadAGenerar);
+        generarYAgregarPlanesAleatoriamente(cantidadAGenerar, planes);
 
         // ==========================================================================
 
         if (imprimirResultado) {
-            imprimirPlanes(BaseDeDatos.planes);
+            imprimirPlanes(planes);
         }
 
-        return true;
+        return planes;
 
     }
 
-    private static void generarYAgregarPlanesAleatoriamente(int cantidadAGenerar){
+    private static void generarYAgregarPlanesAleatoriamente(int cantidadAGenerar, List<Plan> planes){
         
-        CrearPlan crear_plan = new CrearPlanImpl();
         List<Integer> anios_p = new ArrayList<>(40);
         for (int i=1990; i<=2040; i++){
             anios_p.add(i);
@@ -281,14 +279,8 @@ public class GenerarEjemplosDePlanes {
             int anioRandom = anios_p.get(indexRamdom);
             try {
                 Plan aux = new PlanImpl();
-                crear_plan.crear(aux, anioRandom);
-                            
-                /*if(ValidarPlan.validar(plan_aux)){
-                    System.out.println("plan:"+ plan_aux.getAnio() +" validado!");
-                    planes.add(plan_aux);
-                } else {
-                    System.out.println("Plan con año " + plan_aux.getAnio() + " no es valido");
-                }*/
+                aux.setAnio(anioRandom);
+                planes.add(generar(aux));
 
             } catch (Exception e) {
                 e.printStackTrace();
@@ -321,6 +313,86 @@ public class GenerarEjemplosDePlanes {
             }
 
         }
+    }
+
+    public static Plan generar (Plan plan) throws IOException{
+        //plan.setAnio(anio);
+        Random random = new Random();
+        int aux = random.nextInt(3); //random para elegir estado 
+        switch(aux){
+            case 1:
+                plan.setEstadoActivo();
+                break;
+            case 2:
+                plan.setEstadoNoActivo();
+                break;
+            default:
+                plan.setEstadoBorrador();
+                break;
+        }
+        
+        BufferedReader in = null; 
+        aux = random.nextInt(3); //random para elegir archivo a leer
+        try {
+            switch(aux){
+                case 0:
+                    in = new BufferedReader(new InputStreamReader(new FileInputStream("ar/edu/iua/recurso/materias1.txt"), "utf-8"));                  
+                    break;
+                case 1:
+                    in = new BufferedReader(new InputStreamReader(new FileInputStream("ar/edu/iua/recurso/materias2.txt"), "utf-8"));
+                    break;
+                default:
+                    in = new BufferedReader(new InputStreamReader(new FileInputStream("ar/edu/iua/recurso/materias3.txt"), "utf-8"));
+                    break;
+            }
+            int codigo_materia = 1;
+            
+            for(int i = 1; i<6; i++){
+                
+                AnioPlan anio_plan = null;
+                switch(i){
+                    case 1:
+                        anio_plan = new AnioPlanImpl(plan, i, "Primer año");
+                        break;     
+                    case 2:
+                        anio_plan = new AnioPlanImpl(plan, i, "Segundo año");
+                    break;
+                    case 3:
+                        anio_plan = new AnioPlanImpl(plan, i, "Tercer año");
+                        break;
+                    case 4:
+                        anio_plan = new AnioPlanImpl(plan, i, "Cuarto año");
+                        break;
+                    case 5:
+                        anio_plan = new AnioPlanImpl(plan, i, "Quinto año");
+                        break;
+                }
+                
+                String linea;
+                
+                
+                
+
+                while((linea=in.readLine())!=null && !linea.equals("zzz")){
+                    anio_plan.getMaterias().add(new MateriaImpl(anio_plan, codigo_materia++, linea,(double) (random.nextInt(6)+1)));
+
+                }
+                plan.getAnios().add(anio_plan);
+
+            }
+
+
+
+        } catch (Exception ex){
+            ex.printStackTrace();
+        } finally {
+            in.close();
+        }
+        
+        
+        
+        
+        return plan;
     }
 
 }

@@ -1,95 +1,15 @@
 package ar.edu.iua.negocio.academico.plan;
 
-import ar.edu.iua.modelo.academico.plan.AnioPlan;
-import ar.edu.iua.modelo.academico.plan.AnioPlanImpl;
-import ar.edu.iua.modelo.academico.plan.MateriaImpl;
 import ar.edu.iua.modelo.academico.plan.Plan;
 import ar.edu.iua.persistencia.BaseDeDatos;
 
 import java.io.*;
-import java.util.Random;
+
 
 public class CrearPlanImpl implements CrearPlan {
 
     @Override
-    public boolean crear(Plan plan, int anio) throws IOException {
-        
-        plan.setAnio(anio);
-        Random random = new Random();
-        int aux = random.nextInt(3); //random para elegir estado 
-        switch(aux){
-            case 1:
-                plan.setEstadoActivo();
-                break;
-            case 2:
-                plan.setEstadoNoActivo();
-                break;
-            default:
-                plan.setEstadoBorrador();
-                break;
-        }
-        
-        BufferedReader in = null; 
-        aux = random.nextInt(3); //random para elegir archivo a leer
-        try {
-            
-            switch(aux){
-                case 0:
-                    in = new BufferedReader(new InputStreamReader(new FileInputStream("ar/edu/iua/recurso/materias1.txt"), "utf-8"));                  
-                    break;
-                case 1:
-                    in = new BufferedReader(new InputStreamReader(new FileInputStream("ar/edu/iua/recurso/materias2.txt"), "utf-8"));
-                    break;
-                default:
-                    in = new BufferedReader(new InputStreamReader(new FileInputStream("ar/edu/iua/recurso/materias3.txt"), "utf-8"));
-                    break;
-            }
-           
-        
-            int codigo_materia = 1;
-            
-            for(int i = 1; i<6; i++){
-                
-                AnioPlan anio_plan = null;
-                switch(i){
-                    case 1:
-                        anio_plan = new AnioPlanImpl(plan, i, "Primer año");
-                        break;     
-                    case 2:
-                        anio_plan = new AnioPlanImpl(plan, i, "Segundo año");
-                    break;
-                    case 3:
-                        anio_plan = new AnioPlanImpl(plan, i, "Tercer año");
-                        break;
-                    case 4:
-                        anio_plan = new AnioPlanImpl(plan, i, "Cuarto año");
-                        break;
-                    case 5:
-                        anio_plan = new AnioPlanImpl(plan, i, "Quinto año");
-                        break;
-                }
-                
-                String linea;
-                
-                
-                
-
-                while((linea=in.readLine())!=null && !linea.equals("zzz")){
-                    anio_plan.getMaterias().add(new MateriaImpl(anio_plan, codigo_materia++, linea,(double) (random.nextInt(6)+1)));
-
-                }
-                plan.getAnios().add(anio_plan);
-
-            }
-
-
-
-        } catch (Exception ex){
-            ex.printStackTrace();
-        } finally {
-            in.close();
-        }
-
+    public boolean crear(Plan plan) throws IOException {
         
         if(ValidarPlan.validar(plan)) {
             BaseDeDatos.planes.add(plan);
@@ -102,7 +22,7 @@ public class CrearPlanImpl implements CrearPlan {
 
 }
 
-    /*
+    /* LO HACE VALIDAR
         Este metodo requiere que se guarde en la base de datos un plan
         Se debe validar y retornar false si:
             - plan no puede ser null

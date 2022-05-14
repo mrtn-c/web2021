@@ -1,30 +1,26 @@
 package ar.edu.iua.negocio.academico.plan;
-
-import java.util.List;
 import ar.edu.iua.modelo.academico.plan.Plan;
+import ar.edu.iua.persistencia.BaseDeDatos;
 
 public class BorrarPlanImpl implements BorrarPlan {
 
     @Override
-    public boolean borrar(Plan plan, List<Plan> planes) {
-         
-        
-        BuscarPlan buscarPlan = new BuscarPlanImpl();
+    public boolean borrar(Plan plan) {
 
-        if(buscarPlan.buscar(plan.getAnio(), planes) == null){
-            return false;
+        for(Plan aux : BaseDeDatos.planes){
+            if(aux == plan){
+                if(aux.isEstadoBorrador()){
+                    System.out.println("Plan " + aux.getAnio() + " eliminado de la BD");
+                    BaseDeDatos.planes.remove(aux);
+                    return true;
+                } else {
+                    System.out.println("Plan " + aux.getAnio() + " seteado a NOACTIVO");
+                    aux.setEstadoNoActivo();
+                }
+            }
         }
-        
-        if(buscarPlan.buscar(plan.getAnio(), planes).isEstadoBorrador()) {
-            System.out.println("Plan " + plan.getAnio() +" en estado BORRADOR removido.");
-            planes.remove(plan);
-            return true;
-        } else {
-            System.out.println("Plan " + buscarPlan.buscar(plan.getAnio(), planes).getAnio() +" ahora esta NO ACTIVO");
-            buscarPlan.buscar(plan.getAnio(), planes).setEstadoNoActivo();
-            return true;
-        }
-           
+
+        return false;
         
     }
     

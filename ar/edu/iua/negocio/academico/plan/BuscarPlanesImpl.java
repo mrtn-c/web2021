@@ -20,23 +20,15 @@ public class BuscarPlanesImpl implements BuscarPlanes {
         terminos = Normalizador.cleanString(terminos);
         List<String>palabras = Arrays.asList(terminos.split("\\s+")); 
 
-        for(String palabra : palabras){
-            if(palabra.length() <= 2){
-                palabra = null;
-                continue;
-            }
-        }
-
-
         for(String palabra : palabras ){
             
             if(palabra == null){
                 continue;
             } 
             
-            for(Plan plan :BaseDeDatos.planes){
+            for(Plan plan : BaseDeDatos.planes){
                 //Busqueda por año.
-                if(palabra.equals(plan.getAnio().toString())){
+                if(palabra.contains(plan.getAnio().toString())){
                     encontrado(planes, plan);
                     continue;
                 }

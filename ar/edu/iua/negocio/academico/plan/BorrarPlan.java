@@ -1,7 +1,5 @@
 package ar.edu.iua.negocio.academico.plan;
 
-import java.util.List;
-
 import ar.edu.iua.modelo.academico.plan.Plan;
 
 public interface BorrarPlan {
@@ -13,6 +11,6 @@ public interface BorrarPlan {
             - No se permite borrar un plan, excepto si el estado es BORRADOR
 
     */
-    boolean borrar(Plan plan, List<Plan> planes);    
+    boolean borrar(Plan plan);    
     
 }

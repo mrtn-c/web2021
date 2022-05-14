@@ -13,6 +13,7 @@ public interface BorrarPlanes {
             - Ver las mismas reglas de BorrarPlan.borrar(Plan plan)
 
     */
-    boolean borrar(List<Plan> plan);    
+    
+    boolean borrar(List<Plan> planes);    
     
 }
