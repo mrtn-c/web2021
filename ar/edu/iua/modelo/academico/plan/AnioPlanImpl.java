@@ -78,4 +78,17 @@ public class AnioPlanImpl extends AnioPlan {
         return nombre != null ? nombre : (numero != null ? "Año " + numero : "Año sin identificación");
     }
 
+    public Object clone() throws CloneNotSupportedException {
+        AnioPlan cloned = (AnioPlan) super.clone();
+        List<Materia> aux = new ArrayList<>();
+        for (Materia materia : this.materias) {
+            if (materia != null) {
+                materia.setAnio(this);
+                aux.add((Materia) materia.clone());
+            }
+        }
+        cloned.setMaterias(aux);
+        return cloned;
+    }
+
 }

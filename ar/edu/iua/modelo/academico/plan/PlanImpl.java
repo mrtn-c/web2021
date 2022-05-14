@@ -3,7 +3,7 @@ package ar.edu.iua.modelo.academico.plan;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PlanImpl extends Plan {
+public class PlanImpl extends Plan implements Cloneable {
 
     private Integer anio;
     private Estado estado;
@@ -90,6 +90,20 @@ public class PlanImpl extends Plan {
 
     public String toString() {
         return "Plan de estudios " + (anio != null ? anio.toString() : " desconocido");
+    }
+
+    @Override
+    public Object clone() throws CloneNotSupportedException {
+	    Plan cloned = (Plan)super.clone();
+	    List<AnioPlan> aux = new ArrayList<>();
+        for(AnioPlan anio : this.anios){
+            if(anio != null){
+                anio.setPlan(this);
+                aux.add((AnioPlan)anio.clone());
+            }
+        }
+        cloned.setAnios(aux);
+        return cloned;
     }
 
 }

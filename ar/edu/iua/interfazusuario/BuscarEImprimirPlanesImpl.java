@@ -18,6 +18,8 @@ public class BuscarEImprimirPlanesImpl implements BuscarEImprimirPlanes {
     }
 
 	public static void imprimirPlanes(List<Plan> planes) {
+        System.out.println();
+        System.out.println();
         System.out.println("AÑO   DURACION (AÑOS)  Nº MATERIAS  ESTADO");
         System.out.println("---   ---------------  -----------  ------");
         for(Plan plan : planes) {
@@ -27,14 +29,8 @@ public class BuscarEImprimirPlanesImpl implements BuscarEImprimirPlanes {
             }
             System.out.println(plan.getAnio()+ "         " +plan.getAnios().size() 
             +"           "+totalMaterias+"          "+plan.estadoString());
-
-            //estos son los datos que necesitamos
-            /*
-            plan.getAnio() //el año del plan
-            plan.getAnios().size() //cuantos años dura el plan (siempre 5 en nuestro caso)
-            aniopl.getMaterias().size() //el numero de materias(creo)
-            plan.estadoString() //el estado del plan
-            */
         }
+        System.out.println();
+        System.out.println();
 	}
 }

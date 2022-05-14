@@ -8,7 +8,7 @@ public class BorrarPlanImpl implements BorrarPlan {
     public boolean borrar(Plan plan) {
 
         for(Plan aux : BaseDeDatos.planes){
-            if(aux == plan){
+            if(aux.getAnio() == plan.getAnio()){
                 if(aux.isEstadoBorrador()){
                     System.out.println("Plan " + aux.getAnio() + " eliminado de la BD");
                     BaseDeDatos.planes.remove(aux);

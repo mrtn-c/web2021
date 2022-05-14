@@ -28,12 +28,12 @@ public class BuscarPlanesImpl implements BuscarPlanes {
             
             for(Plan plan : BaseDeDatos.planes){
                 //Busqueda por año.
-                if(palabra.contains(plan.getAnio().toString())){
+                if(plan.getAnio().toString().contains(palabra)){
                     encontrado(planes, plan);
                     continue;
                 }
                 //Busqueda por estado.
-                if(palabra.equals(plan.estadoString().toLowerCase())){
+                if(plan.estadoString().toLowerCase().contains(palabra)){
                     encontrado(planes, plan);
                     continue;
                 }
@@ -41,25 +41,23 @@ public class BuscarPlanesImpl implements BuscarPlanes {
                 //busqueda por materia.
                 for(AnioPlan anio : plan.getAnios()){
                     for(Materia materia : anio.getMaterias()){
-                        List<String> aux = Arrays.asList(materia.getNombre().toLowerCase().split("\\s+")); 
+                        String aux1 = Normalizador.cleanString(materia.getNombre()).toLowerCase();
+                        List<String> aux = Arrays.asList(aux1.split("\\s+")); 
                         for(String limpiar: aux){
                             Normalizador.cleanString(limpiar);
                         }
 
-                        if(aux.contains(palabra)){
-                            encontrado(planes, plan);
-                            continue; //o iria un break aca???
+                        for(String aux2 : aux){
+                            if(aux2.contains(palabra)){
+                                encontrado(planes, plan);
+                                continue; //o iria un break aca???
+                            }
                         }
                     }
-                }
-                
-                
-                
-                
+                } 
             }
         }
 
-        imprimirEncontrados(planes);
 
          
         
@@ -79,14 +77,6 @@ public class BuscarPlanesImpl implements BuscarPlanes {
         
         
  
-    }
-
-    private void imprimirEncontrados(List<Plan> planes){
-        
-        for(Plan plan : planes){
-            System.out.println("plan año: " + plan.getAnio());
-        }
-        
     }
 
 

@@ -8,27 +8,20 @@ public class ModificarPlanImpl implements ModificarPlan {
 	@Override
 	public boolean modificar(Plan plan) {
         
-        if(plan == null || !BaseDeDatos.planes.contains(plan) || (ValidarPlan.validar(plan)) == false){
-            return false;
-        }
+       // boolean bandera = false;
         
-        int index = BaseDeDatos.planes.indexOf(plan);
-
-        BaseDeDatos.planes.get(index).setAnio(plan.getAnio());
-        BaseDeDatos.planes.get(index).getAnios().clear();
-        BaseDeDatos.planes.get(index).setAnios(plan.getAnios());
-        
-        if(plan.isEstadoActivo()){
-            BaseDeDatos.planes.get(index).setEstadoActivo();
-        }
-
-        if(plan.isEstadoBorrador()){
-            BaseDeDatos.planes.get(index).setEstadoBorrador();
-        } else {
-            BaseDeDatos.planes.get(index).setEstadoNoActivo();
-        }
-
-		return true;
+        if(ValidarPlan.validar(plan)){
+			for(Plan aux : BaseDeDatos.planes) {
+                if(aux.getAnio().equals(plan.getAnio())){
+                    try {
+                        BaseDeDatos.planes.set(BaseDeDatos.planes.indexOf(aux), (Plan)plan.clone());
+                        return true;
+                    } catch (CloneNotSupportedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+    	}
+		return false;
 	}
-    
 }

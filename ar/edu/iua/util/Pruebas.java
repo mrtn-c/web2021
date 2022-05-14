@@ -2,6 +2,7 @@ package ar.edu.iua.util;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Scanner;
 
 import ar.edu.iua.interfazusuario.BuscarEImprimirPlanes;
 import ar.edu.iua.interfazusuario.BuscarEImprimirPlanesImpl;
@@ -19,7 +20,7 @@ public class Pruebas {
     public void probar() throws IOException {
 
         //genera los 2 planes hardcodeados y x aleatorios
-        List<Plan> planes = GenerarEjemplosDePlanes.generar(2, true);        
+        List<Plan> planes = GenerarEjemplosDePlanes.generar(2, false);        
 
         System.out.println("\n\nSe crearon " + planes.size() + " planes.");
 
@@ -36,17 +37,15 @@ public class Pruebas {
             return;
         }
         
-        ModificarPlanes modificarPlan = new ModificarPlanesImpl();
-
-        planes.clear(); //LO TENEMOS TODO EN LA BD
+        ModificarPlan modificarPlan = new ModificarPlanImpl();
+ 
 
         
-
         BuscarEImprimirPlanesImpl.imprimirPlanes(BaseDeDatos.planes);
+        BuscarEImprimirPlanes buscador = new BuscarEImprimirPlanesImpl();
         
-        //cambia los anios de los 2 primeros elementos de la lista
-        /*planes.get(0).setAnio(2050);
-        planes.get(1).setAnio(2003);
+        planes.get(0).setEstadoActivo(); 
+        planes.get(1).setEstadoNoActivo();
         
         //este deberia tirar NO
         ok = modificarPlan.modificar(planes.get(0));
@@ -54,16 +53,17 @@ public class Pruebas {
         
         //este deberia tirar SI
         ok = modificarPlan.modificar(planes.get(1));
-        System.out.println("Se modifico el plan " + planes.get(1) + " ? = " + (ok ? "SI" : "NO") ); */
+        System.out.println("Se modifico el plan " + planes.get(1) + " ? = " + (ok ? "SI" : "NO") ); 
 
+        BuscarEImprimirPlanesImpl.imprimirPlanes(BaseDeDatos.planes);
         
-
 
         //BuscarEImprimirPlanes buscarEImprimirPlanes = new BuscarEImprimirPlanesImpl();
 
         // debe buscar todos los planes que contengan en sus datos (incluido años y materias)
         // devolver todos los planes q contengan un valor 18, o mate o hist o 5
-        //buscarEImprimirPlanes.buscarEImprimirPlanes("18 mate hist 5"); 
+        System.out.println("jejejejejje");
+        buscador.buscarEImprimirPlanes("lengu"); 
 
         //por favor complete con mas codigo de pruebas, trate de probar todas las clases de negocio, borrar, modificar, buscar    
 

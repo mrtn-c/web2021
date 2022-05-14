@@ -12,8 +12,12 @@ public class CrearPlanImpl implements CrearPlan {
     public boolean crear(Plan plan) throws IOException {
         
         if(ValidarPlan.validar(plan)) {
-            BaseDeDatos.planes.add(plan);
-            return true;
+            try{
+                BaseDeDatos.planes.add((Plan)plan.clone());
+                return true;
+            } catch (CloneNotSupportedException e) {
+                e.printStackTrace();
+            }
         }
         
         return false;

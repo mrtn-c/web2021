@@ -27,7 +27,7 @@ public class GenerarEjemplosDePlanes {
         Plan plan2018 = new PlanImpl();
 
         plan2018.setAnio(2018);
-        plan2018.setEstadoActivo();
+        plan2018.setEstadoBorrador();
 
         // AÑOS DEL PLAN 2018
 
@@ -137,7 +137,7 @@ public class GenerarEjemplosDePlanes {
         Plan plan2001 = new PlanImpl();
 
         plan2001.setAnio(2001);
-        plan2001.setEstadoNoActivo();
+        plan2001.setEstadoBorrador();
 
         // AÑOS DEL PLAN 2001
 
