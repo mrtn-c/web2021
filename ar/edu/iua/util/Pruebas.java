@@ -4,6 +4,8 @@ import java.util.List;
 
 import ar.edu.iua.interfazusuario.BuscarEImprimirPlanes;
 import ar.edu.iua.modelo.academico.plan.Plan;
+import ar.edu.iua.negocio.academico.plan.BuscarPlanes;
+import ar.edu.iua.negocio.academico.plan.BuscarPlanesImpl;
 import ar.edu.iua.negocio.academico.plan.CrearPlanes;
 import ar.edu.iua.persistencia.BaseDeDatos;
 
@@ -14,6 +16,14 @@ public class Pruebas {
         GenerarEjemplosDePlanes.generar(2, true);        
 
         System.out.println("\n\nSe crearon " + BaseDeDatos.planes.size() + " planes.");
+
+        BuscarPlanes buscarPlanes = new BuscarPlanesImpl();
+
+        List<Plan> planes = buscarPlanes.buscar("LENGúA MATEMATíCá 2018 ciencia"); //soy un pro
+        }
+        
+        
+
 
 
         /*CrearPlanes crearPlanes = new CrearPlanesImpl();

@@ -21,6 +21,8 @@ public abstract class Plan extends Objeto {
     abstract public boolean isEstadoActivo();
 
     abstract public boolean isEstadoNoActivo();
+    
+    abstract public String estadoString();
 
     abstract public boolean hasEstado();
 

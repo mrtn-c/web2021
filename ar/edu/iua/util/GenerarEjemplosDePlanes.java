@@ -258,7 +258,7 @@ public class GenerarEjemplosDePlanes {
         // ==========================================================================
 
         if (imprimirResultado) {
-            imprimirPlanes();
+            imprimirPlanes(BaseDeDatos.planes);
         }
 
         return true;
@@ -304,8 +304,8 @@ public class GenerarEjemplosDePlanes {
     } 
 
 
-    private static void imprimirPlanes() {
-        for (Plan plan  : BaseDeDatos.planes) {
+    public static void imprimirPlanes(List<Plan> planes) {
+        for (Plan plan  : planes) {
             System.out.println("\n" + plan);
             for (AnioPlan anio : plan.getAnios()) {
                 System.out.println("\t" + anio);

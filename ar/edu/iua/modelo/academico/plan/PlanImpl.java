@@ -12,7 +12,7 @@ public class PlanImpl extends Plan {
     private enum Estado {
         BORRADOR,
         ACTIVO,
-        NO_ACTIVO
+        INACTIVO
     }
 
     public Integer getAnio() {
@@ -32,7 +32,7 @@ public class PlanImpl extends Plan {
     }
 
     public void setEstadoNoActivo() {
-        estado = Estado.NO_ACTIVO;
+        estado = Estado.INACTIVO;
     }
 
     public boolean isEstadoBorrador() {
@@ -44,7 +44,7 @@ public class PlanImpl extends Plan {
     }
 
     public boolean isEstadoNoActivo() {
-        return estado == Estado.NO_ACTIVO;
+        return estado == Estado.INACTIVO;
     }
     
     public boolean hasEstado(){
@@ -53,6 +53,10 @@ public class PlanImpl extends Plan {
 
     public List<AnioPlan> getAnios() {
         return anios;
+    }
+
+    public String estadoString(){
+        return estado.name();
     }
 
     public void setAnios(List<AnioPlan> anios) {
