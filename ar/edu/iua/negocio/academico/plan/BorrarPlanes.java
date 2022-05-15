@@ -12,8 +12,7 @@ public interface BorrarPlanes {
             - planes no puede ser null            
             - Ver las mismas reglas de BorrarPlan.borrar(Plan plan)
 
-    */
-    
+    */ 
     boolean borrar(List<Plan> planes);    
     
 }

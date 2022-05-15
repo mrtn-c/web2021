@@ -2,7 +2,6 @@ package ar.edu.iua.util;
 
 import java.io.IOException;
 import java.util.List;
-import java.util.Scanner;
 
 import ar.edu.iua.interfazusuario.BuscarEImprimirPlanes;
 import ar.edu.iua.interfazusuario.BuscarEImprimirPlanesImpl;
@@ -11,8 +10,6 @@ import ar.edu.iua.negocio.academico.plan.CrearPlanes;
 import ar.edu.iua.negocio.academico.plan.CrearPlanesImpl;
 import ar.edu.iua.negocio.academico.plan.ModificarPlan;
 import ar.edu.iua.negocio.academico.plan.ModificarPlanImpl;
-import ar.edu.iua.negocio.academico.plan.ModificarPlanes;
-import ar.edu.iua.negocio.academico.plan.ModificarPlanesImpl;
 import ar.edu.iua.persistencia.BaseDeDatos;
 
 public class Pruebas {
@@ -57,15 +54,7 @@ public class Pruebas {
 
         BuscarEImprimirPlanesImpl.imprimirPlanes(BaseDeDatos.planes);
         
-
-        //BuscarEImprimirPlanes buscarEImprimirPlanes = new BuscarEImprimirPlanesImpl();
-
-        // debe buscar todos los planes que contengan en sus datos (incluido años y materias)
-        // devolver todos los planes q contengan un valor 18, o mate o hist o 5
-        System.out.println("jejejejejje");
-        buscador.buscarEImprimirPlanes("lengu"); 
-
-        //por favor complete con mas codigo de pruebas, trate de probar todas las clases de negocio, borrar, modificar, buscar    
+        buscador.buscarEImprimirPlanes("lengu");    
 
     }
 

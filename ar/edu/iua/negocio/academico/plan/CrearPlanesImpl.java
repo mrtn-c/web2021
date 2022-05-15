@@ -11,7 +11,6 @@ public class CrearPlanesImpl implements CrearPlanes {
     public boolean crear(List<Plan> planes) throws IOException {
 
         CrearPlanImpl aux = new CrearPlanImpl();
-        //Plan guardar = new PlanImpl();
         
         for (Plan plan : planes){
             aux.crear(plan);
