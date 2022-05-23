@@ -127,12 +127,7 @@ public class GenerarEjemplosDePlanes {
         quinto2018.getMaterias().add(new MateriaImpl(quinto2018, codigoMateria++, "Espacios Optativos 2022", 3.0));
 
         // PLAN 2001
-
-        if(ValidarPlan.validar(plan2018)){
-            planes.add(plan2018);
-        } else {
-            System.out.println("Plan " + plan2018.getAnio() + " no validado!");
-        }
+        planes.add(plan2018);
 
         Plan plan2001 = new PlanImpl();
 
@@ -243,12 +238,7 @@ public class GenerarEjemplosDePlanes {
         sexto2001.getMaterias().add(new MateriaImpl(sexto2001, codigoMateria++, "Informatica III", 2.0));
         sexto2001.getMaterias().add(new MateriaImpl(sexto2001, codigoMateria++, "Educacion Fisica VI", 2.0));
         
-        
-        if(ValidarPlan.validar(plan2001)){
-            planes.add(plan2001);
-        } else {
-            System.out.println("Plan " + plan2001.getAnio() + " no validado!");
-        }
+        planes.add(plan2001);
         
         // ==========================================================================
 

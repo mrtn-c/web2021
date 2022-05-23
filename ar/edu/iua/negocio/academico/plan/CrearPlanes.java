@@ -1,8 +1,8 @@
 package ar.edu.iua.negocio.academico.plan;
 
-import java.io.IOException;
 import java.util.List;
 
+import ar.edu.iua.excepciones.CrearPlanEx;
 import ar.edu.iua.modelo.academico.plan.Plan;
 
 public interface CrearPlanes {
@@ -13,6 +13,6 @@ public interface CrearPlanes {
             - planes no puede ser null
             - Ver las mismas reglas de CrearPlan.crear(Plan plan)
     */
-    boolean crear(List<Plan> planes) throws IOException;    
+    boolean crear(List<Plan> planes) throws CrearPlanEx;    
     
 }

@@ -1,5 +1,6 @@
 package ar.edu.iua.negocio.academico.plan;
 
+import ar.edu.iua.excepciones.BorrarPlanEx;
 import ar.edu.iua.modelo.academico.plan.Plan;
 
 public interface BorrarPlan {
@@ -11,6 +12,6 @@ public interface BorrarPlan {
             - No se permite borrar un plan, excepto si el estado es BORRADOR
 
     */
-    boolean borrar(Plan plan);    
+    boolean borrar(Plan plan) throws BorrarPlanEx;    
     
 }

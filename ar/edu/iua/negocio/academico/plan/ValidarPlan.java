@@ -3,6 +3,8 @@ package ar.edu.iua.negocio.academico.plan;
 import java.util.ArrayList;
 import java.util.List;
 
+import ar.edu.iua.excepciones.ObjetoEx;
+import ar.edu.iua.excepciones.ValidarPlanEx;
 import ar.edu.iua.modelo.academico.plan.AnioPlan;
 import ar.edu.iua.modelo.academico.plan.Materia;
 import ar.edu.iua.modelo.academico.plan.Plan;
@@ -32,12 +34,16 @@ public class ValidarPlan {
             - No se permite que una materias tenga carga horaria < 0, recordar que si el estado del plan es BORRADOR, este att puede ser null, pero nunca <= 0 
     */
 
-    public static boolean validar(Plan plan) {
+    public static boolean validar(Plan plan) throws ValidarPlanEx {
+
+// COMPLETAR LAS EXCEPCIONES
+// COMPLETAR LAS EXCEPCIONES
 
         List <Integer> auxNumAnio = new ArrayList<>();
         
         if (!plan.hasEstado()){ //comprobamos que tenga estado asignado.
-            return false;
+            //return false;
+            throw new ValidarPlanEx("El estado del plan es null");
         }
         
         boolean borrador = plan.isEstadoBorrador() ? true : false;

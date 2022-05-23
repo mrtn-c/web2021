@@ -1,12 +1,20 @@
 package ar.edu.iua.negocio.academico.plan;
+import ar.edu.iua.excepciones.BorrarPlanEx;
 import ar.edu.iua.modelo.academico.plan.Plan;
 import ar.edu.iua.persistencia.BaseDeDatos;
 
 public class BorrarPlanImpl implements BorrarPlan {
 
     @Override
-    public boolean borrar(Plan plan) {
-
+    public boolean borrar(Plan plan) throws BorrarPlanEx {
+        
+        if(plan == null)  { 
+            throw new BorrarPlanEx("el plan recibido es nulo");
+        }
+        if (plan.getAnio() == null) {
+            throw new BorrarPlanEx("el plan recibido no tiene año definido"); 
+        }
+        // COMPLETAR LAS EXCEPCIONES
         for(Plan aux : BaseDeDatos.planes){
             if(aux.getAnio() == plan.getAnio()){
                 if(aux.isEstadoBorrador()){
@@ -19,9 +27,7 @@ public class BorrarPlanImpl implements BorrarPlan {
                 }
             }
         }
-
-        return false;
-        
+        return false;       
     }
     
 }

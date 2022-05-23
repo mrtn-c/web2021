@@ -20,7 +20,7 @@ public class BuscarPlanesImpl implements BuscarPlanes {
         terminos = Normalizador.cleanString(terminos);
         List<String>palabras = Arrays.asList(terminos.split("\\s+")); 
 
-        for(String palabra : palabras ){
+        for(String palabra : palabras){
             
             if(palabra == null){
                 continue;
@@ -50,24 +50,18 @@ public class BuscarPlanesImpl implements BuscarPlanes {
                         for(String aux2 : aux){
                             if(aux2.contains(palabra)){
                                 encontrado(planes, plan);
-                                continue; //o iria un break aca???
+                                continue;
                             }
                         }
                     }
                 } 
             }
-        }
-
-
-         
-        
-        
-        
+        }  
         return planes;
     }
 
 
-    private void encontrado(List<Plan> planes, Plan plan){ //capaz q void
+    private void encontrado(List<Plan> planes, Plan plan){
         if(planes.contains(plan)){
             return;
         } else {
@@ -78,9 +72,4 @@ public class BuscarPlanesImpl implements BuscarPlanes {
         
  
     }
-
-
-    
-    
-    
 }

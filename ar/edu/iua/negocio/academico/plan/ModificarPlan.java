@@ -1,5 +1,6 @@
 package ar.edu.iua.negocio.academico.plan;
 
+import ar.edu.iua.excepciones.ModificarPlanEx;
 import ar.edu.iua.modelo.academico.plan.Plan;
 
 public interface ModificarPlan {
@@ -9,6 +10,6 @@ public interface ModificarPlan {
         Se debe validar y retornar false si:
             - Ver las mismas reglas de CrearPlan.crear(Plan plan)
     */
-    boolean modificar(Plan plan);    
+    boolean modificar(Plan plan) throws ModificarPlanEx;    
     
 }

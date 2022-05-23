@@ -16,46 +16,49 @@ public class Pruebas {
 
     public void probar() throws IOException {
 
-        //genera los 2 planes hardcodeados y x aleatorios
-        List<Plan> planes = GenerarEjemplosDePlanes.generar(2, false);        
+        try {
 
-        System.out.println("\n\nSe crearon " + planes.size() + " planes.");
+            // genera los 2 planes hardcodeados y x aleatorios
+            List<Plan> planes = GenerarEjemplosDePlanes.generar(25, false);
 
-        CrearPlanes crearPlanes = new CrearPlanesImpl();
-        
-        //envia la lista a la bd
-        boolean ok = crearPlanes.crear(planes);
+            System.out.println("\n\nSe crearon " + planes.size() + " planes.");
 
-        if (ok == false) {
-            return;
+            CrearPlanes crearPlanes = new CrearPlanesImpl();
+
+            // envia la lista a la bd
+            boolean ok = crearPlanes.crear(planes);
+
+            if (ok == false) {
+                return;
+            }
+
+            if (BaseDeDatos.planes == null) {
+                return;
+            }
+
+            ModificarPlan modificarPlan = new ModificarPlanImpl();
+
+            BuscarEImprimirPlanesImpl.imprimirPlanes(BaseDeDatos.planes);
+            BuscarEImprimirPlanes buscador = new BuscarEImprimirPlanesImpl();
+
+            planes.get(0).setEstadoActivo();
+            planes.get(1).setEstadoNoActivo();
+
+            // este deberia tirar NO
+            ok = modificarPlan.modificar(planes.get(0));
+            System.out.println("Se modifico el plan " + planes.get(0) + " ? = " + (ok ? "SI" : "NO"));
+
+            // este deberia tirar SI
+            ok = modificarPlan.modificar(planes.get(1));
+            System.out.println("Se modifico el plan " + planes.get(1) + " ? = " + (ok ? "SI" : "NO"));
+
+            BuscarEImprimirPlanesImpl.imprimirPlanes(BaseDeDatos.planes);
+
+            buscador.buscarEImprimirPlanes("lengu");
+
+        } catch (Exception e) {
+
         }
-
-        if(BaseDeDatos.planes == null){
-            return;
-        }
-        
-        ModificarPlan modificarPlan = new ModificarPlanImpl();
- 
-
-        
-        BuscarEImprimirPlanesImpl.imprimirPlanes(BaseDeDatos.planes);
-        BuscarEImprimirPlanes buscador = new BuscarEImprimirPlanesImpl();
-        
-        planes.get(0).setEstadoActivo(); 
-        planes.get(1).setEstadoNoActivo();
-        
-        //este deberia tirar NO
-        ok = modificarPlan.modificar(planes.get(0));
-        System.out.println("Se modifico el plan " + planes.get(0) + " ? = " + (ok ? "SI" : "NO") );
-        
-        //este deberia tirar SI
-        ok = modificarPlan.modificar(planes.get(1));
-        System.out.println("Se modifico el plan " + planes.get(1) + " ? = " + (ok ? "SI" : "NO") ); 
-
-        BuscarEImprimirPlanesImpl.imprimirPlanes(BaseDeDatos.planes);
-        
-        buscador.buscarEImprimirPlanes("lengu");    
-
     }
 
 }
