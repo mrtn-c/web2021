@@ -3,7 +3,6 @@ package ar.edu.iua.negocio.academico.plan;
 import java.util.ArrayList;
 import java.util.List;
 
-import ar.edu.iua.excepciones.ObjetoEx;
 import ar.edu.iua.excepciones.ValidarPlanEx;
 import ar.edu.iua.modelo.academico.plan.AnioPlan;
 import ar.edu.iua.modelo.academico.plan.Materia;
@@ -36,21 +35,26 @@ public class ValidarPlan {
 
     public static boolean validar(Plan plan) throws ValidarPlanEx {
 
-// COMPLETAR LAS EXCEPCIONES
-// COMPLETAR LAS EXCEPCIONES
-
         List <Integer> auxNumAnio = new ArrayList<>();
         
+        if (plan == null) {
+            throw new ValidarPlanEx("plan es null");
+        }
+
+        if(plan.getAnio() == null){
+            throw new ValidarPlanEx("El plan no posee anio");
+        }
+
         if (!plan.hasEstado()){ //comprobamos que tenga estado asignado.
             //return false;
-            throw new ValidarPlanEx("El estado del plan es null");
+            throw new ValidarPlanEx("El plan no posee estado");
         }
         
         boolean borrador = plan.isEstadoBorrador() ? true : false;
          
         
-        if(plan.getAnio() < 1990 || plan.getAnio()> 2040){
-            return false;
+        if(plan.getAnio() <= 1990 || plan.getAnio() >= 2040){
+            throw new ValidarPlanEx("El anio del plan esta fuera del rango permitido");
         }
         
         
@@ -58,8 +62,7 @@ public class ValidarPlan {
         for(int i = 0; i<plan.getAnios().size(); i++){
                 
             if(!plan.getAnios().get(i).getPlan().equals(plan)){
-                System.out.println("año del plan, no pertenece a ese plan");
-                return false;
+                throw new ValidarPlanEx("año del plan, no pertenece a ese plan");
             }    
         }
 
@@ -67,17 +70,14 @@ public class ValidarPlan {
         for(int i = 1; i<plan.getAnios().size()-1; i++){
                
             if(!(plan.getAnios().get(i-1).getNumero() < plan.getAnios().get(i).getNumero()) || !(plan.getAnios().get(i+1).getNumero() > plan.getAnios().get(i).getNumero())){     
-                System.out.println("no hay secuencialidad en los años");
-                return false;     
+                throw new ValidarPlanEx("no hay secuencialidad en los años");    
             }  
         }
 
-            
         for(AnioPlan anio : plan.getAnios()){
             for(int j = 0; j<auxNumAnio.size(); j++){
                 if(auxNumAnio.get(j).equals(anio.getNumero())){ 
-                    System.out.println("año con el mismo numero");
-                    return false;  
+                    throw new ValidarPlanEx("año con el mismo numero");
                 }        
             }       
             
@@ -85,8 +85,7 @@ public class ValidarPlan {
                   
             for (int j = 0; j<anio.getMaterias().size(); j++){           
                 if(!anio.getMaterias().get(j).getAnio().equals(anio)){            
-                    System.out.println("materia no pertenece a ese año");
-                    return false;           
+                    throw new ValidarPlanEx("materia no pertenece a ese año");          
                 } //J -- recorre materias, la i los años.                   
             }   
         }
@@ -101,8 +100,7 @@ public class ValidarPlan {
                 for(int j = 0; j<auxNumAnio.size(); j++){//materia con la que comparo
                         
                     if(anio.getMaterias().get(i).getCodigo().equals(auxNumAnio.get(j)) && anio.getMaterias().get(i).getCodigo()>0){
-                        System.out.println("materia con mismo codigo " + anio.getMaterias().get(i). getCodigo() + " - " + auxNumAnio.get(j));
-                        return false;
+                        throw new ValidarPlanEx("materia con mismo codigo " + anio.getMaterias().get(i). getCodigo() + " - " + auxNumAnio.get(j));
                     }
                 }
                 auxNumAnio.add(anio.getMaterias().get(i).getCodigo());
@@ -114,45 +112,37 @@ public class ValidarPlan {
         for(AnioPlan anio : plan.getAnios()){
             for(int i = 1; i<anio.getMaterias().size()-1; i++){
                if(!(anio.getMaterias().get(i-1).getCodigo()<anio.getMaterias().get(i).getCodigo()) || !(anio.getMaterias().get(i+1).getCodigo()>anio.getMaterias().get(i).getCodigo())){
-                    System.out.println("materia sin secuencialidad");
-                    return false;
+                throw new ValidarPlanEx("materia sin secuencialidad");
                 }
             }
-        }
-
-
-        if (plan == null || plan.getAnio() == null || plan.getAnio() <= 1990 || plan.getAnio() >= 2040) {
-            return false;
         }
 
         if(!borrador){
 
             if(plan.getAnio() == null || plan.getAnio()<=0)
-                return false;
+                throw new ValidarPlanEx("anio es nulo o menor que cero");
             
             if(plan.getAnios() == null)
-                return false;
+                throw new ValidarPlanEx("el plan no posee anios asignados");
             
             
             for(AnioPlan anio : plan.getAnios()){
                 if(anio.getNombre() == null){
-                    return false;
+                    throw new ValidarPlanEx("uno de los anios del plan no posee nombre");
                 }
 
                 if(anio.getMaterias() == null){
-                    return false;
+                    throw new ValidarPlanEx("uno de los anios del plan no posee materias asignadas");
                 }
 
                 for(Materia materia : anio.getMaterias()){
                     if(materia.getCargaHoraria()<0 || materia.getCargaHoraria()==null || materia.getNombre()==null || materia.getCodigo()<0){
-                        System.out.println("A materia se le cargo mal un dato");
-                        return false;
+                        throw new ValidarPlanEx("A materia se le cargo mal un dato");
                     }
                 }
             }
 
         }
-        
 
         return true;
     }

@@ -8,11 +8,12 @@ import ar.edu.iua.modelo.academico.plan.AnioPlan;
 import ar.edu.iua.modelo.academico.plan.Materia;
 import ar.edu.iua.modelo.academico.plan.Plan;
 import ar.edu.iua.persistencia.BaseDeDatos;
+import ar.edu.iua.excepciones.BuscarPlanEx;
 
 public class BuscarPlanesImpl implements BuscarPlanes {
 
     @Override
-    public List<Plan> buscar(String terminos) {
+    public List<Plan> buscar(String terminos) throws BuscarPlanEx {
         
         
         List<Plan> planes = new ArrayList<>();

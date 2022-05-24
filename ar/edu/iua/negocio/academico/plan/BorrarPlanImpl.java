@@ -14,7 +14,7 @@ public class BorrarPlanImpl implements BorrarPlan {
         if (plan.getAnio() == null) {
             throw new BorrarPlanEx("el plan recibido no tiene año definido"); 
         }
-        // COMPLETAR LAS EXCEPCIONES
+  
         for(Plan aux : BaseDeDatos.planes){
             if(aux.getAnio() == plan.getAnio()){
                 if(aux.isEstadoBorrador()){

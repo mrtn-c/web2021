@@ -44,11 +44,9 @@ public class Pruebas {
             planes.get(0).setEstadoActivo();
             planes.get(1).setEstadoNoActivo();
 
-            // este deberia tirar NO
             ok = modificarPlan.modificar(planes.get(0));
             System.out.println("Se modifico el plan " + planes.get(0) + " ? = " + (ok ? "SI" : "NO"));
 
-            // este deberia tirar SI
             ok = modificarPlan.modificar(planes.get(1));
             System.out.println("Se modifico el plan " + planes.get(1) + " ? = " + (ok ? "SI" : "NO"));
 

@@ -9,7 +9,6 @@ import java.util.List;
 import java.util.Random;
 
 import ar.edu.iua.modelo.academico.plan.*;
-import ar.edu.iua.negocio.academico.plan.*;
 
 public class GenerarEjemplosDePlanes {
 
